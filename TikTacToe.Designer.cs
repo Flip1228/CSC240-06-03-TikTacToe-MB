@@ -1,6 +1,6 @@
 ﻿namespace TicTacToe
 {
-    partial class Form1
+    partial class TikTacToe
     {
         /// <summary>
         ///  Required designer variable.
@@ -30,10 +30,10 @@
         {
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
+            highScoresToolStripMenuItem = new ToolStripMenuItem();
             optionsToolStripMenuItem = new ToolStripMenuItem();
             resetToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
-            highScoresToolStripMenuItem = new ToolStripMenuItem();
             button0 = new Button();
             button3 = new Button();
             button4 = new Button();
@@ -65,29 +65,31 @@
             fileToolStripMenuItem.Size = new Size(47, 27);
             fileToolStripMenuItem.Text = "File";
             // 
+            // highScoresToolStripMenuItem
+            // 
+            highScoresToolStripMenuItem.Name = "highScoresToolStripMenuItem";
+            highScoresToolStripMenuItem.Size = new Size(180, 28);
+            highScoresToolStripMenuItem.Text = "High Scores";
+            // 
             // optionsToolStripMenuItem
             // 
             optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            optionsToolStripMenuItem.Size = new Size(170, 28);
+            optionsToolStripMenuItem.Size = new Size(180, 28);
             optionsToolStripMenuItem.Text = "Options";
+            optionsToolStripMenuItem.Click += Menu_Options_Click;
             // 
             // resetToolStripMenuItem
             // 
             resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            resetToolStripMenuItem.Size = new Size(170, 28);
+            resetToolStripMenuItem.Size = new Size(180, 28);
             resetToolStripMenuItem.Text = "Reset";
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(170, 28);
+            exitToolStripMenuItem.Size = new Size(180, 28);
             exitToolStripMenuItem.Text = "Exit";
-            // 
-            // highScoresToolStripMenuItem
-            // 
-            highScoresToolStripMenuItem.Name = "highScoresToolStripMenuItem";
-            highScoresToolStripMenuItem.Size = new Size(170, 28);
-            highScoresToolStripMenuItem.Text = "High Scores";
+            exitToolStripMenuItem.Click += Menu_Exit_Click;
             // 
             // button0
             // 
