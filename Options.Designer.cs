@@ -42,6 +42,7 @@
             // 
             // easyRadio
             // 
+            easyRadio.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             easyRadio.AutoSize = true;
             easyRadio.Location = new Point(31, 40);
             easyRadio.Name = "easyRadio";
@@ -53,6 +54,7 @@
             // 
             // normalRadio
             // 
+            normalRadio.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             normalRadio.AutoSize = true;
             normalRadio.Location = new Point(31, 73);
             normalRadio.Name = "normalRadio";
@@ -64,6 +66,7 @@
             // 
             // hardRadio
             // 
+            hardRadio.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             hardRadio.AutoSize = true;
             hardRadio.Location = new Point(31, 106);
             hardRadio.Name = "hardRadio";
@@ -75,11 +78,12 @@
             // 
             // selectButton
             // 
+            selectButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             selectButton.BackColor = Color.Silver;
             selectButton.FlatStyle = FlatStyle.Popup;
-            selectButton.Location = new Point(12, 259);
+            selectButton.Location = new Point(12, 241);
             selectButton.Name = "selectButton";
-            selectButton.Size = new Size(336, 40);
+            selectButton.Size = new Size(352, 40);
             selectButton.TabIndex = 3;
             selectButton.Text = "Select";
             selectButton.UseVisualStyleBackColor = false;
@@ -87,33 +91,35 @@
             // 
             // difficultyGroup
             // 
-            difficultyGroup.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            difficultyGroup.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
             difficultyGroup.Controls.Add(easyRadio);
             difficultyGroup.Controls.Add(normalRadio);
             difficultyGroup.Controls.Add(hardRadio);
             difficultyGroup.FlatStyle = FlatStyle.Popup;
-            difficultyGroup.Location = new Point(176, 70);
+            difficultyGroup.Location = new Point(192, 70);
             difficultyGroup.Name = "difficultyGroup";
-            difficultyGroup.Size = new Size(172, 164);
+            difficultyGroup.Size = new Size(172, 146);
             difficultyGroup.TabIndex = 51;
             difficultyGroup.TabStop = false;
             difficultyGroup.Text = "Pick your difficulty";
             // 
             // markerGroup
             // 
+            markerGroup.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             markerGroup.BackgroundImageLayout = ImageLayout.None;
             markerGroup.Controls.Add(xMarkerRadio);
             markerGroup.Controls.Add(oMarkerRadio);
             markerGroup.FlatStyle = FlatStyle.Popup;
-            markerGroup.Location = new Point(12, 104);
+            markerGroup.Location = new Point(12, 73);
             markerGroup.Name = "markerGroup";
-            markerGroup.Size = new Size(154, 130);
+            markerGroup.Size = new Size(154, 112);
             markerGroup.TabIndex = 52;
             markerGroup.TabStop = false;
             markerGroup.Text = "Pick your marker";
             // 
             // xMarkerRadio
             // 
+            xMarkerRadio.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             xMarkerRadio.AutoSize = true;
             xMarkerRadio.Location = new Point(44, 78);
             xMarkerRadio.Name = "xMarkerRadio";
@@ -126,6 +132,7 @@
             // 
             // oMarkerRadio
             // 
+            oMarkerRadio.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             oMarkerRadio.AutoSize = true;
             oMarkerRadio.Location = new Point(44, 45);
             oMarkerRadio.Name = "oMarkerRadio";
@@ -138,12 +145,17 @@
             // 
             // Options
             // 
+            AcceptButton = selectButton;
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(360, 320);
+            AutoValidate = AutoValidate.EnableAllowFocusChange;
+            ClientSize = new Size(376, 302);
             Controls.Add(markerGroup);
             Controls.Add(difficultyGroup);
             Controls.Add(selectButton);
+            FormBorderStyle = FormBorderStyle.None;
+            MaximumSize = new Size(376, 302);
+            MinimumSize = new Size(376, 302);
             Name = "Options";
             Text = "Options";
             difficultyGroup.ResumeLayout(false);
