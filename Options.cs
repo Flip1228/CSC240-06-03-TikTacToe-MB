@@ -1,29 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Security.Cryptography.Xml;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace TicTacToe
+﻿namespace TicTacToe
 {
     public partial class Options : Form
     {
 
         public string? difficulty { get; private set; }
-        public string? Player_Marker { get; private set; }
+        public char Player_Marker { get; private set; }
 
-        public Options(string passingDiff, string passingMarker)
+        public Options(string passingDiff, char passingMarker)
         {
             InitializeComponent();
             InitializeOptions(passingDiff, passingMarker);
         }
 
-        private void InitializeOptions(string diff, string Marker)
+        private void InitializeOptions(string diff, char Marker)
         {
 
             if (diff is not null)
@@ -35,14 +24,10 @@ namespace TicTacToe
                 if (diff == "Hard")
                     hardRadio.Checked = true;
             }
-
-            if (Marker is not null)
-            {
-                if (Marker == "X")
-                    xMarkerRadio.Checked = true;
-                if (Marker == "O")
-                    oMarkerRadio.Checked = true;
-            }
+            if (Marker == 'X')
+                xMarkerRadio.Checked = true;
+            if (Marker == 'O')
+                oMarkerRadio.Checked = true;
         }
 
 
@@ -55,19 +40,31 @@ namespace TicTacToe
             if (hardRadio.Checked is true)
                 difficulty = "Hard";
         }
-        
+
         private void Marker_CheckedChanged(object sender, EventArgs e)
         {
             if (xMarkerRadio.Checked is true)
-                Player_Marker = "X";
+                Player_Marker = 'X';
             if (oMarkerRadio.Checked is true)
-                Player_Marker = "O";
+                Player_Marker = 'O';
+        }
+
+        private static bool Force_Options(GroupBox grpbox)
+        {
+            foreach (Control control in grpbox.Controls)
+            {
+                if (control is RadioButton radiobutton && radiobutton.Checked)
+                    return true;
+            }
+            return false;
         }
 
         private void selectButton_Click(object sender, EventArgs e)
         {
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            if (Force_Options(markerGroup) is true && Force_Options(difficultyGroup) is true)
+                this.Close();
+            else
+                MessageBox.Show("Please select both group of options");
         }
 
 
