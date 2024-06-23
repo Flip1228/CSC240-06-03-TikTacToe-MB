@@ -30,7 +30,6 @@
         {
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
-            highScoresToolStripMenuItem = new ToolStripMenuItem();
             optionsToolStripMenuItem = new ToolStripMenuItem();
             resetToolStripMenuItem = new ToolStripMenuItem();
             exitToolStripMenuItem = new ToolStripMenuItem();
@@ -44,8 +43,8 @@
             button7 = new Button();
             button2 = new Button();
             turnLabel = new Label();
-            label1 = new Label();
-            label2 = new Label();
+            computerWins = new Label();
+            playerWins = new Label();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -60,34 +59,29 @@
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { highScoresToolStripMenuItem, optionsToolStripMenuItem, resetToolStripMenuItem, exitToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { optionsToolStripMenuItem, resetToolStripMenuItem, exitToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new Size(47, 27);
             fileToolStripMenuItem.Text = "File";
             // 
-            // highScoresToolStripMenuItem
-            // 
-            highScoresToolStripMenuItem.Name = "highScoresToolStripMenuItem";
-            highScoresToolStripMenuItem.Size = new Size(180, 28);
-            highScoresToolStripMenuItem.Text = "High Scores";
-            // 
             // optionsToolStripMenuItem
             // 
             optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            optionsToolStripMenuItem.Size = new Size(180, 28);
+            optionsToolStripMenuItem.Size = new Size(140, 28);
             optionsToolStripMenuItem.Text = "Options";
             optionsToolStripMenuItem.Click += Menu_Options_Click;
             // 
             // resetToolStripMenuItem
             // 
             resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            resetToolStripMenuItem.Size = new Size(180, 28);
+            resetToolStripMenuItem.Size = new Size(140, 28);
             resetToolStripMenuItem.Text = "Reset";
+            resetToolStripMenuItem.Click += resetToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(180, 28);
+            exitToolStripMenuItem.Size = new Size(140, 28);
             exitToolStripMenuItem.Text = "Exit";
             exitToolStripMenuItem.Click += Menu_Exit_Click;
             // 
@@ -98,6 +92,7 @@
             button0.Size = new Size(75, 32);
             button0.TabIndex = 1;
             button0.UseVisualStyleBackColor = true;
+            button0.Click += BoardButton_Click;
             // 
             // button3
             // 
@@ -106,6 +101,7 @@
             button3.Size = new Size(75, 32);
             button3.TabIndex = 2;
             button3.UseVisualStyleBackColor = true;
+            button3.Click += BoardButton_Click;
             // 
             // button4
             // 
@@ -114,6 +110,7 @@
             button4.Size = new Size(75, 32);
             button4.TabIndex = 3;
             button4.UseVisualStyleBackColor = true;
+            button4.Click += BoardButton_Click;
             // 
             // button5
             // 
@@ -122,6 +119,7 @@
             button5.Size = new Size(75, 32);
             button5.TabIndex = 4;
             button5.UseVisualStyleBackColor = true;
+            button5.Click += BoardButton_Click;
             // 
             // button1
             // 
@@ -130,6 +128,7 @@
             button1.Size = new Size(75, 32);
             button1.TabIndex = 5;
             button1.UseVisualStyleBackColor = true;
+            button1.Click += BoardButton_Click;
             // 
             // button6
             // 
@@ -138,6 +137,7 @@
             button6.Size = new Size(75, 32);
             button6.TabIndex = 6;
             button6.UseVisualStyleBackColor = true;
+            button6.Click += BoardButton_Click;
             // 
             // button8
             // 
@@ -146,6 +146,7 @@
             button8.Size = new Size(75, 32);
             button8.TabIndex = 7;
             button8.UseVisualStyleBackColor = true;
+            button8.Click += BoardButton_Click;
             // 
             // button7
             // 
@@ -154,6 +155,7 @@
             button7.Size = new Size(75, 32);
             button7.TabIndex = 8;
             button7.UseVisualStyleBackColor = true;
+            button7.Click += BoardButton_Click;
             // 
             // button2
             // 
@@ -162,42 +164,47 @@
             button2.Size = new Size(75, 32);
             button2.TabIndex = 9;
             button2.UseVisualStyleBackColor = true;
+            button2.Click += BoardButton_Click;
             // 
             // turnLabel
             // 
             turnLabel.AutoSize = true;
             turnLabel.Font = new Font("Tempus Sans ITC", 15.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            turnLabel.Location = new Point(70, 54);
+            turnLabel.Location = new Point(73, 56);
             turnLabel.Name = "turnLabel";
             turnLabel.Size = new Size(140, 27);
             turnLabel.TabIndex = 10;
             turnLabel.Text = "Player X turn";
+            turnLabel.Visible = false;
             // 
-            // label1
+            // computerWins
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(0, 254);
-            label1.Name = "label1";
-            label1.Size = new Size(161, 23);
-            label1.TabIndex = 11;
-            label1.Text = "Computer wins: 234";
+            computerWins.AutoSize = true;
+            computerWins.Location = new Point(0, 254);
+            computerWins.Name = "computerWins";
+            computerWins.Size = new Size(0, 23);
+            computerWins.TabIndex = 11;
             // 
-            // label2
+            // playerWins
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(179, 254);
-            label2.Name = "label2";
-            label2.Size = new Size(118, 23);
-            label2.TabIndex = 12;
-            label2.Text = "User wins: 213";
+            playerWins.AutoSize = true;
+            playerWins.Location = new Point(179, 254);
+            playerWins.Name = "playerWins";
+            playerWins.Size = new Size(91, 23);
+            playerWins.TabIndex = 12;
+            playerWins.Text = "User wins: ";
             // 
-            // Form1
+            // startButton
+            // 
+
+            // 
+            // TikTacToe
             // 
             AutoScaleDimensions = new SizeF(9F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(303, 316);
-            Controls.Add(label2);
-            Controls.Add(label1);
+            Controls.Add(playerWins);
+            Controls.Add(computerWins);
             Controls.Add(turnLabel);
             Controls.Add(button2);
             Controls.Add(button7);
@@ -210,7 +217,7 @@
             Controls.Add(button0);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Name = "Form1";
+            Name = "TikTacToe";
             Text = "Tik Tac Toe";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
@@ -225,18 +232,18 @@
         private ToolStripMenuItem optionsToolStripMenuItem;
         private ToolStripMenuItem resetToolStripMenuItem;
         private ToolStripMenuItem exitToolStripMenuItem;
-        private ToolStripMenuItem highScoresToolStripMenuItem;
         private Button button0;
+        private Button button1;
+        private Button button2;
         private Button button3;
         private Button button4;
         private Button button5;
-        private Button button1;
         private Button button6;
-        private Button button8;
         private Button button7;
-        private Button button2;
+        private Button button8;
         private Label turnLabel;
-        private Label label1;
-        private Label label2;
+        private Label computerWins;
+        private Label playerWins;
+
     }
 }
