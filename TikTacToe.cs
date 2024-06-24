@@ -12,14 +12,14 @@ namespace TicTacToe
         private char Player_Marker;
         private char Computer_Marker;
         private char currentPlayer;
-        // Computer wins, Player Wins
+        // PlayerWins, ComputerWins
         private int[] scoreKeeper = { 0, 0 };
 
         public TikTacToe()
         {
             InitializeComponent();
-            OptionsWindow();
             board = new char[9];
+            OptionsWindow();
             InitializeGame();
         }
         private void Menu_Options_Click(object sender, EventArgs e)
@@ -35,8 +35,21 @@ namespace TicTacToe
             char markerSelection = optionsWindow.Player_Marker;
             if (diffSelection != null)
             {
-                difficulty = diffSelection;
-                Player_Marker = markerSelection;
+            
+                // Check if difficulty changed.
+                if (difficulty != diffSelection)
+                {
+                    scoreKeeper[0] = 0;
+                    scoreKeeper[1] = 0;
+                    difficulty = diffSelection;
+                    Player_Marker = markerSelection;
+                    InitializeGame();
+                }
+                else
+                {
+
+                    Player_Marker = markerSelection;
+                }
             }
         }
 
@@ -49,10 +62,14 @@ namespace TicTacToe
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             InitializeGame();
-        }
+         }
 
         private void InitializeGame()
         {
+            if (board is null)
+            {
+                board = new char[9];
+            }
             for (int i = 0; i < 9; i++)
             {
                 board[i] = ' ';
@@ -62,19 +79,14 @@ namespace TicTacToe
             if (Player_Marker == 'X')
                 Computer_Marker = 'O';
             else if (Player_Marker == 'O')
-                    Computer_Marker = 'X';
+                Computer_Marker = 'X';
             currentPlayer = Player_Marker;
             turnLabel.Text = $"Player {currentPlayer}'s turn";
             turnLabel.Visible = true;
+            playerWins.Text = "Player wins: " + scoreKeeper[0];
+            computerWins.Text = "Computer wins: " + scoreKeeper[1];
         }
 
-        //private void startButton_Click(object sender, EventArgs e)
-        //{
-        //    if (difficulty != null && Player_Marker != ' ')
-        //        InitializeGame();
-        //    else
-        //        MessageBox.Show("Please go to file and options to select options.");
-        //}
 
         private void BoardButton_Click(object sender, EventArgs e)
         {
@@ -88,6 +100,7 @@ namespace TicTacToe
                 if (CheckWin())
                 {
                     turnLabel.Text = $"Player {currentPlayer} wins!";
+                    scoreKeeper[0] = ++scoreKeeper[0];
                     EndGame();
                 }
                 else if (board.All(x => x != ' '))
@@ -130,6 +143,7 @@ namespace TicTacToe
             if (CheckWin())
             {
                 turnLabel.Text = $"Player {currentPlayer} wins!";
+                scoreKeeper[1] = ++scoreKeeper[1];
                 EndGame();
             }
             else if (board.All(x => x != ' '))
@@ -267,6 +281,10 @@ namespace TicTacToe
             for (int i = 0; i < 9; i++)
             {
                 Controls["button" + i].Enabled = false;
+                playerWins.Text = "Player wins: " + scoreKeeper[0];
+                computerWins.Text = "Computer wins: " + scoreKeeper[1];
+                computerWins.Visible = true;
+                playerWins.Visible = true;
             }
         }
 

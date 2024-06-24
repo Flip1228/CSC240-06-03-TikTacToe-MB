@@ -44,6 +44,7 @@
             button6 = new Button();
             turnLabel = new Label();
             computerWins = new Label();
+            playerWins = new Label();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -53,7 +54,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(5, 1, 0, 1);
-            menuStrip1.Size = new Size(236, 24);
+            menuStrip1.Size = new Size(317, 24);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -87,8 +88,9 @@
             // 
             // button0
             // 
-            button0.Location = new Point(26, 74);
-            button0.Margin = new Padding(2, 2, 2, 2);
+            button0.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            button0.Location = new Point(61, 74);
+            button0.Margin = new Padding(2);
             button0.Name = "button0";
             button0.Size = new Size(58, 21);
             button0.TabIndex = 1;
@@ -97,8 +99,9 @@
             // 
             // button1
             // 
-            button1.Location = new Point(89, 74);
-            button1.Margin = new Padding(2, 2, 2, 2);
+            button1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            button1.Location = new Point(124, 74);
+            button1.Margin = new Padding(2);
             button1.Name = "button1";
             button1.Size = new Size(58, 21);
             button1.TabIndex = 2;
@@ -107,8 +110,9 @@
             // 
             // button4
             // 
-            button4.Location = new Point(89, 98);
-            button4.Margin = new Padding(2, 2, 2, 2);
+            button4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            button4.Location = new Point(124, 98);
+            button4.Margin = new Padding(2);
             button4.Name = "button4";
             button4.Size = new Size(58, 21);
             button4.TabIndex = 3;
@@ -117,8 +121,9 @@
             // 
             // button7
             // 
-            button7.Location = new Point(89, 123);
-            button7.Margin = new Padding(2, 2, 2, 2);
+            button7.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            button7.Location = new Point(124, 123);
+            button7.Margin = new Padding(2);
             button7.Name = "button7";
             button7.Size = new Size(58, 21);
             button7.TabIndex = 4;
@@ -127,8 +132,9 @@
             // 
             // button3
             // 
-            button3.Location = new Point(26, 98);
-            button3.Margin = new Padding(2, 2, 2, 2);
+            button3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            button3.Location = new Point(61, 98);
+            button3.Margin = new Padding(2);
             button3.Name = "button3";
             button3.Size = new Size(58, 21);
             button3.TabIndex = 5;
@@ -137,8 +143,9 @@
             // 
             // button2
             // 
-            button2.Location = new Point(152, 74);
-            button2.Margin = new Padding(2, 2, 2, 2);
+            button2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            button2.Location = new Point(187, 74);
+            button2.Margin = new Padding(2);
             button2.Name = "button2";
             button2.Size = new Size(58, 21);
             button2.TabIndex = 6;
@@ -147,8 +154,9 @@
             // 
             // button8
             // 
-            button8.Location = new Point(152, 123);
-            button8.Margin = new Padding(2, 2, 2, 2);
+            button8.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            button8.Location = new Point(187, 123);
+            button8.Margin = new Padding(2);
             button8.Name = "button8";
             button8.Size = new Size(58, 21);
             button8.TabIndex = 7;
@@ -157,8 +165,9 @@
             // 
             // button5
             // 
-            button5.Location = new Point(152, 98);
-            button5.Margin = new Padding(2, 2, 2, 2);
+            button5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            button5.Location = new Point(187, 98);
+            button5.Margin = new Padding(2);
             button5.Name = "button5";
             button5.Size = new Size(58, 21);
             button5.TabIndex = 8;
@@ -167,8 +176,9 @@
             // 
             // button6
             // 
-            button6.Location = new Point(26, 123);
-            button6.Margin = new Padding(2, 2, 2, 2);
+            button6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            button6.Location = new Point(61, 123);
+            button6.Margin = new Padding(2);
             button6.Name = "button6";
             button6.Size = new Size(58, 21);
             button6.TabIndex = 9;
@@ -177,9 +187,10 @@
             // 
             // turnLabel
             // 
+            turnLabel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             turnLabel.AutoSize = true;
             turnLabel.Font = new Font("Tempus Sans ITC", 15.75F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
-            turnLabel.Location = new Point(57, 37);
+            turnLabel.Location = new Point(92, 37);
             turnLabel.Margin = new Padding(2, 0, 2, 0);
             turnLabel.Name = "turnLabel";
             turnLabel.Size = new Size(140, 27);
@@ -189,18 +200,32 @@
             // 
             // computerWins
             // 
+            computerWins.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             computerWins.AutoSize = true;
-            computerWins.Location = new Point(0, 166);
-            computerWins.Margin = new Padding(2, 0, 2, 0);
+            computerWins.Location = new Point(24, 202);
             computerWins.Name = "computerWins";
-            computerWins.Size = new Size(0, 15);
+            computerWins.Size = new Size(103, 15);
             computerWins.TabIndex = 11;
+            computerWins.Text = "Computer wins 10";
+            computerWins.Visible = false;
+            // 
+            // playerWins
+            // 
+            playerWins.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            playerWins.AutoSize = true;
+            playerWins.Location = new Point(207, 202);
+            playerWins.Name = "playerWins";
+            playerWins.Size = new Size(84, 15);
+            playerWins.TabIndex = 12;
+            playerWins.Text = "Player wins: 10";
+            playerWins.Visible = false;
             // 
             // TikTacToe
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(236, 206);
+            ClientSize = new Size(317, 242);
+            Controls.Add(playerWins);
             Controls.Add(computerWins);
             Controls.Add(turnLabel);
             Controls.Add(button6);
@@ -214,9 +239,9 @@
             Controls.Add(button0);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "TikTacToe";
-            Text = "Tik Tac Toe";
+            Text = "Tic Tac Toe";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -241,6 +266,6 @@
         private Button button8;
         private Label turnLabel;
         private Label computerWins;
-
+        private Label playerWins;
     }
 }
