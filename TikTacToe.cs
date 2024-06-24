@@ -40,13 +40,11 @@ namespace TicTacToe
             }
         }
 
-    private void Menu_Exit_Click(object sender, EventArgs e)
+        private void Menu_Exit_Click(object sender, EventArgs e)
         {
             DialogResult exit = MessageBox.Show("Are you sure you want to exit?", "Exit Tik Tac Toe", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (exit == DialogResult.Yes)
                 Application.Exit();
-            else
-                return;
         }
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -63,8 +61,8 @@ namespace TicTacToe
             }
             if (Player_Marker == 'X')
                 Computer_Marker = 'O';
-            if (Player_Marker == 'O')
-                Computer_Marker = 'X';
+            else if (Player_Marker == 'O')
+                    Computer_Marker = 'X';
             currentPlayer = Player_Marker;
             turnLabel.Text = $"Player {currentPlayer}'s turn";
             turnLabel.Visible = true;
@@ -84,16 +82,12 @@ namespace TicTacToe
             int index = int.Parse(button.Name.Substring(6));
             if (board[index] == ' ')
             {
-                board[index] = currentPlayer;
-                button.Text = currentPlayer.ToString();
+                board[index] = Player_Marker;
+                button.Text = Player_Marker.ToString();
                 button.Enabled = false;
                 if (CheckWin())
                 {
                     turnLabel.Text = $"Player {currentPlayer} wins!";
-                    if (currentPlayer == Player_Marker)
-                        scoreKeeper[1]++;
-                    else if (currentPlayer == Computer_Marker)
-                        scoreKeeper[0]++;
                     EndGame();
                 }
                 else if (board.All(x => x != ' '))
@@ -103,13 +97,14 @@ namespace TicTacToe
                 }
                 else
                 {
-                    currentPlayer = currentPlayer == Player_Marker ? Computer_Marker : Player_Marker;
+                    currentPlayer = Computer_Marker;
                     turnLabel.Text = $"Player {currentPlayer}'s turn!";
-                }
-                if (currentPlayer == Computer_Marker)
                     ComputerMove();
+                }
             }
         }
+
+
         private void ComputerMove()
         {
             int move;
@@ -126,10 +121,11 @@ namespace TicTacToe
             {
                 move = HardMove();
             }
-           
-       
+
+            board[move] = Computer_Marker;
+
             Button button = (Button)Controls["button" + move];
-            button.Text = $"{Computer_Marker}";
+            button.Text = Computer_Marker.ToString();
             button.Enabled = false;
             if (CheckWin())
             {
@@ -143,17 +139,13 @@ namespace TicTacToe
             }
             else
             {
-                currentPlayer = currentPlayer == Player_Marker ? Computer_Marker : Player_Marker;
+                currentPlayer = Player_Marker;
                 turnLabel.Text = $"Player {currentPlayer}'s turn!";
             }
-            if (currentPlayer == Computer_Marker)
-                ComputerMove();
         }
 
 
-
-
-        private int RandomMove()
+        private int RandomMove() // only some times takes its turn
         {
             int move;
 
@@ -166,7 +158,7 @@ namespace TicTacToe
             return move;
         }
 
-        private int NormalMove()
+        private int NormalMove() //isnt saying the computer won if it wins and allows you to keep selecting
         {
             for (int i = 0; i < 9; i++)
             {
@@ -175,7 +167,7 @@ namespace TicTacToe
                     board[i] = Computer_Marker;
                     if (CheckWin())
                     {
-                        board[i] = ' ';
+                        board[i] = Computer_Marker;
                         return i;
                     }
                     board[i] = ' ';
@@ -189,13 +181,12 @@ namespace TicTacToe
                     board[i] = Player_Marker;
                     if (CheckWin())
                     {
-                        board[i] = ' ';
+                        board[i] = Computer_Marker;
                         return i;
                     }
                     board[i] = ' ';
                 }
             }
-
             return RandomMove();
         }
 
@@ -206,23 +197,23 @@ namespace TicTacToe
 
         private (int, int) Minimax(char[] boardState, char player) //borrowed some of this method 
         {
-            char opponet = player == Computer_Marker ? Player_Marker : Computer_Marker;
+            char opponent = player == Computer_Marker ? Player_Marker : Computer_Marker;
 
             if (CheckWinFor(boardState, Computer_Marker))
-                return (0, 9);
+                return (0, 10);
             if (CheckWinFor(boardState, Player_Marker))
                 return (-1, -10);
             if (boardState.All(x => x != ' '))
                 return (-1, 0);
 
-            var bestMove = (-1, player == currentPlayer ? int.MinValue : int.MaxValue);
+            var bestMove = (-1, player == Computer_Marker ? int.MinValue : int.MaxValue);
 
             for (int i = 0; i < 9; i++)
             {
                 if (boardState[i] == ' ')
                 {
                     boardState[i] = player;
-                    var score = Minimax(boardState, opponet).Item2;
+                    var score = Minimax(boardState, opponent).Item2;
                     boardState[i] = ' ';
 
                     if (player == currentPlayer)
